@@ -1,34 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Nav from "./components/Nav.tsx";
+import Content from "./view/Content.tsx";
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import {setItems} from "./features/listSlice.ts";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    // 대량의 데이터를 초기화 (10000개의 항목 생성)
+    const items = Array.from({ length: 10000 }, (_, i) => `Item ${i + 1}`);
+    dispatch(setItems(items));
+  }, [dispatch]);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div style={{display:"grid", gridTemplateColumns: "400px 1fr", gap: "20px", height: "100vh" /* 전체 화면 높이 */}}>
+      <Nav />
+      <Content />
+    </div>
+
   )
 }
 
