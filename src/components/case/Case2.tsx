@@ -6,7 +6,8 @@ function Case2({roopCount}:{roopCount:number}) {
 
   useEffect(() => {
     setSum(Array.from({length:roopCount}, (_,i)=>i).reduce<number>((acc, curr) => acc + curr, 0));
-  }, [roopCount]);
+    console.info(firstName);
+  }, [firstName, roopCount]);
 
   //const sum = Array.from({length:roopCount}, (_,i)=>i).reduce<number>((acc, curr) => acc + curr, 0);
 
