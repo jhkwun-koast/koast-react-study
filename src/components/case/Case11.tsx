@@ -18,10 +18,6 @@
 }*/
 import { useSyncExternalStore} from "react";
 
-const snapshot = {
-  innerHeight,
-  innerWidth
-}
 function subscribe(callback:()=>void) {
   window.addEventListener('resize', callback);
   return () => {
@@ -29,10 +25,9 @@ function subscribe(callback:()=>void) {
   };
 }
 
-function getSnapshot(): { innerWidth: number; innerHeight: number } {
-  snapshot.innerHeight = window.innerHeight;
-  snapshot.innerWidth = window.innerWidth;
-  return snapshot;
+function getSnapshot(): string {
+
+  return [window.innerHeight, window.innerWidth].join('@');
 }
 
 function useWindowSizeStatus() {
@@ -44,7 +39,7 @@ function useWindowSizeStatus() {
 }
 
 function Case11() {
-  const {innerHeight, innerWidth} = useWindowSizeStatus();
+  const [innerHeight, innerWidth] = useWindowSizeStatus().split('@');
 
   return (
     <>

@@ -9,7 +9,7 @@ function Case6() {
     alert('post analytics');
   }, []);
   useEffect(() => {
-    alert(jsonToSubmit)
+    if (jsonToSubmit.length > 0)  alert(jsonToSubmit)
   }, [jsonToSubmit]);
 
   function handleSubmit(e:React.FormEvent<HTMLFormElement>) {

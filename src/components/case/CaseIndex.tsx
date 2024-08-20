@@ -11,6 +11,7 @@ import Case9 from "./Case9.tsx";
 import Case11 from "./Case11.tsx";
 import Case11Extra1 from "./Case11Extra1.tsx";
 import Case11Extra2 from "./Case11Extra2.tsx";
+import Case12 from "./Case12.tsx";
 
 
 function getComponent(value:number) {
@@ -23,7 +24,7 @@ function getComponent(value:number) {
       const userId = "shinekill";
       return <Case3 userId={userId} />
     case 3:
-      return <Case4 items={[...menuNames]} />
+      return <Case4 items={[...menuNames, 'aa','bb']} />
     case 4:
       return <Case5 />
     case 5:
@@ -38,6 +39,8 @@ function getComponent(value:number) {
       return <Case11Extra1 />
     case 12:
       return <Case11Extra2 />
+    case 13:
+      return <Case12 />
   }
 
 }
